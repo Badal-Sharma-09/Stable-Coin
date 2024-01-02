@@ -1,5 +1,5 @@
 
-#  NFT
+#  Stable Coin
 
 This is a Decenterlized Stable Coin. It handles all the minting and redeeming DSC, as well as depositing and withdrawing collateral. This contract is based on the MakerDAO DSS system.
  
