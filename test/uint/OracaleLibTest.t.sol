@@ -17,21 +17,21 @@ contract OracleLibTest is StdCheats, Test {
     function setUp() public {
         aggregator = new MockV3Aggregator(DECIMALS, INITAL_PRICE);
     }
-      
-      function testGetTimeOut() public {
+
+    function testGetTimeOut() public {
         uint256 expectTimeOut = 3 hours;
-       assertEq(OracleLib.getTimeout(AggregatorV3Interface(address(aggregator))), expectTimeOut);
-      }
+        assertEq(OracleLib.getTimeout(AggregatorV3Interface(address(aggregator))), expectTimeOut);
+    }
 
-      function testPriceRevertsOnStaleCheck() public {
-       vm.warp(block.timestamp + 4 hours + 1 seconds);
-       vm.roll(block.number + 1);
-       vm.expectRevert(OracleLib.OracleLib__StalePrice.selector);
-       //OracleLib.staleCheckLatestRoundData(AggregatorV3Interface(address(aggregator)));
-       AggregatorV3Interface(address(aggregator)).staleCheckLatestRoundData();
-      }
+    function testPriceRevertsOnStaleCheck() public {
+        vm.warp(block.timestamp + 4 hours + 1 seconds);
+        vm.roll(block.number + 1);
+        vm.expectRevert(OracleLib.OracleLib__StalePrice.selector);
+        //OracleLib.staleCheckLatestRoundData(AggregatorV3Interface(address(aggregator)));
+        AggregatorV3Interface(address(aggregator)).staleCheckLatestRoundData();
+    }
 
-       function testPriceRevertsOnBadAnsweredInRound() public {
+    function testPriceRevertsOnBadAnsweredInRound() public {
         uint80 _roundId = 0;
         int256 _answer = 0;
         uint256 _timestamp = 0;

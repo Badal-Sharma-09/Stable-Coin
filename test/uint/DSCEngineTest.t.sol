@@ -111,11 +111,7 @@ contract DSCEngineTest is Test {
         tokenAddresses = [address(mockDsc)];
         priceFeedAddresses = [ethUsdPriceFeed];
         vm.prank(owner);
-        DSCEngine mockDsce = new DSCEngine(
-            tokenAddresses,
-            priceFeedAddresses,
-            address(mockDsc)
-        );
+        DSCEngine mockDsce = new DSCEngine(tokenAddresses, priceFeedAddresses, address(mockDsc));
 
         mockDsc.mint(USER, amountCollateral);
 
@@ -211,11 +207,7 @@ contract DSCEngineTest is Test {
         priceFeedAddresses = [ethUsdPriceFeed];
         address owner = msg.sender;
         vm.prank(owner);
-        DSCEngine mockDsce = new DSCEngine(
-            tokenAddresses,
-            priceFeedAddresses,
-            address(mockDsc)
-        );
+        DSCEngine mockDsce = new DSCEngine(tokenAddresses, priceFeedAddresses, address(mockDsc));
         mockDsc.transferOwnership(address(mockDsce));
         // Arrange - User
         vm.startPrank(USER);
@@ -305,11 +297,7 @@ contract DSCEngineTest is Test {
         tokenAddresses = [address(mockDsc)];
         priceFeedAddresses = [ethUsdPriceFeed];
         vm.prank(owner);
-        DSCEngine mockDsce = new DSCEngine(
-            tokenAddresses,
-            priceFeedAddresses,
-            address(mockDsc)
-        );
+        DSCEngine mockDsce = new DSCEngine(tokenAddresses, priceFeedAddresses, address(mockDsc));
         mockDsc.mint(USER, amountCollateral);
 
         vm.prank(owner);
@@ -413,11 +401,7 @@ contract DSCEngineTest is Test {
         priceFeedAddresses = [ethUsdPriceFeed];
         address owner = msg.sender;
         vm.prank(owner);
-        DSCEngine mockDsce = new DSCEngine(
-            tokenAddresses,
-            priceFeedAddresses,
-            address(mockDsc)
-        );
+        DSCEngine mockDsce = new DSCEngine(tokenAddresses, priceFeedAddresses, address(mockDsc));
         mockDsc.transferOwnership(address(mockDsce));
         // Arrange - User
         vm.startPrank(USER);

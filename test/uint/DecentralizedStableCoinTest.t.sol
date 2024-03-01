@@ -38,4 +38,17 @@ contract DecentralizedStableCoinTest is StdCheats, Test {
         vm.expectRevert(DecentralizedStableCoin.DecentralizedStableCoin__NotZeroAddress.selector);
         dsc.mint(address(0), 20 ether);
     }
+
+    function testOwnerCanMintAndBurnTokens() public {
+        vm.prank(dsc.owner());
+        uint256 AmountBeforeMint = dsc.balanceOf(dsc.owner());
+        dsc.mint(address(this), 20 ether);
+        uint256 AmountAfterMint = dsc.balanceOf(dsc.owner());
+        dsc.burn(20 ether);
+        uint256 AmountAfterBurn = dsc.balanceOf(dsc.owner());
+
+        console.log("Balance before Mint", AmountBeforeMint);
+        console.log("Balance After Mint", AmountAfterMint);
+        console.log("Balance After burn", AmountAfterBurn);
+    }
 }
